@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Google Login</string>
+    <string name="action_settings">Settings</string>
+    <string name="signed_out">Signed out</string>
+    <string name="signed_in_fmt">Signed in as: %s</string>
+
+    <string name="sign_out">Sign Out</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="refresh_token">Get Fresh Token</string>
+</resources>
