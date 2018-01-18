@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1068918933616",
-    "project_id": "glogindemo-3a4dc"
+    "project_number": "762819736952",
+    "project_id": "login-819e3"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1068918933616:android:78b92a47db11b94a",
+        "mobilesdk_app_id": "1:762819736952:android:78b92a47db11b94a",
         "android_client_info": {
           "package_name": "com.sk.googlelogin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1068918933616-gdf7jm527n0nkg07oj4cjtga3ivsd6mg.apps.googleusercontent.com",
+          "client_id": "762819736952-kqi84mro7f2ic5i84aj85scc1crbj85q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.sk.googlelogin",
-            "certificate_hash": "491218ae0d39d6e8eb3f21a8c9bda002f1c912c6"
+            "certificate_hash": "fa4d9c44185bc44af810638b1e218f97ed92a24a"
           }
         },
         {
-          "client_id": "1068918933616-v2nmc2tijunr9id520vhd8fk4kv7e7ph.apps.googleusercontent.com",
+          "client_id": "762819736952-sbp7qbisvdjc699a10d0mmbi6bqr7446.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAaOKFs8HCf4nBprApE0xroN9GMrhZysRA"
+          "current_key": "AIzaSyDWkG8vXFb61Z1vj6JOM8Ev549Q8ZrrPh8"
         }
       ],
       "services": {

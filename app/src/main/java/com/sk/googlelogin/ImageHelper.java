@@ -1,4 +1,10 @@
-package com.androidtutorialpoint.glogin;
+package com.sk.googlelogin;
+
+/*
+ * Created by Sambhaji Karad on 18-Jan-18
+ * Mobile 9423476192
+ * Email sambhaji2134@gmail.com/
+*/
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -48,7 +54,7 @@ public class ImageHelper {
     }
 
 
-    paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
     canvas.drawBitmap(input, 0,0, paint);
 
     return output;

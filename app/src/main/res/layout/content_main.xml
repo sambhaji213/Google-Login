@@ -18,15 +18,24 @@
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/imageViewProfile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@null"/>
 
         <TextView
             android:id="@+id/status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="@string/signed_out"
+            android:layout_marginTop="20dp"
+            android:text="@string/hint_signed_out"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
@@ -35,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="@string/sign_out"
+            android:text="@string/hint_sign_out"
             android:theme="@style/ThemeOverlay.MyDarkButton" />
     </LinearLayout>
 

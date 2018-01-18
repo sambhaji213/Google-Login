@@ -1,6 +1,15 @@
 package com.sk.googlelogin;
 
+/*
+ * Created by Sambhaji Karad on 18-Jan-18
+ * Mobile 9423476192
+ * Email sambhaji2134@gmail.com/
+*/
+
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -24,10 +34,15 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.InputStream;
+
+import static java.security.AccessController.getContext;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private SignInButton mSignInButton;
     private Button mSignOutButton;
+    private ImageView mImageViewProfile;
     private TextView mStatusTextView;
 
     private static final String TAG = "SignInActivity";
@@ -40,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mImageViewProfile = (ImageView) findViewById(R.id.imageViewProfile);
         mStatusTextView = (TextView) findViewById(R.id.status);
         mSignInButton = (SignInButton) findViewById(R.id.sign_in_button);
         mSignOutButton = (Button) findViewById(R.id.sign_out_button);
@@ -68,6 +84,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSignInButton.setSize(SignInButton.SIZE_STANDARD);
         mSignInButton.setColorScheme(SignInButton.COLOR_LIGHT);
         // [END customize_button]
+
+        //Customize google button text, color, background etc
+        setGooglePlusButtonText(mSignInButton, "Login with Google");
+    }
+
+    protected void setGooglePlusButtonText(SignInButton signInButton, String buttonText) {
+        // Find the TextView that is inside of the SignInButton and set its text
+        for (int i = 0; i < signInButton.getChildCount(); i++) {
+            View view = signInButton.getChildAt(i);
+
+            if (view instanceof TextView) {
+                TextView textView = (TextView) view;
+                textView.setText(buttonText);
+                textView.setTextColor(getResources().getColor(R.color.colorAccent));
+                textView.setTextSize(16);
+                return;
+            }
+        }
     }
 
     @Override
@@ -151,14 +185,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void updateUI(@Nullable GoogleSignInAccount account) {
         if (account != null) {
-            mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
+            mStatusTextView.setText(getString(R.string.hint_signed_in_as, account.getDisplayName()));
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
             findViewById(R.id.status).setVisibility(View.VISIBLE);
+
+            new LoadProfileImage(mImageViewProfile).execute(account.getPhotoUrl().toString());
         } else {
-            mStatusTextView.setText(R.string.signed_out);
+            mStatusTextView.setText(R.string.hint_signed_out);
             findViewById(R.id.sign_out_button).setVisibility(View.GONE);
             findViewById(R.id.status).setVisibility(View.GONE);
+            findViewById(R.id.imageViewProfile).setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Background Async task to load user profile picture from url
+     * */
+    private class LoadProfileImage extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public LoadProfileImage(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... uri) {
+            String url = uri[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(url).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            if (result != null) {
+                Bitmap resized = Bitmap.createScaledBitmap(result,200,200, true);
+                bmImage.setImageBitmap(ImageHelper.getRoundedCornerBitmap(MainActivity.this,
+                        resized,250,200,200,
+                        false, false, false, false));
+                bmImage.setVisibility(View.VISIBLE);
+            }
         }
     }
 
