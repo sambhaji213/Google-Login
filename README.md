@@ -66,7 +66,9 @@ Add the dependency to your project-level build.gradle:
 **build.gradle**
 
 ``implementation 'com.google.android.gms:play-services-auth:11.6.0'``
+
 or
+
 ``complie 'com.google.android.gms:play-services-auth:11.6.0'``
 
 Add the plugin to your app-level build.gradle:
