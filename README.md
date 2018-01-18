@@ -5,4 +5,4 @@ Android Login with Google is a really useful feature for both the app developer 
 We will be creating a sample Google Login app describing how to integrate google login and retrieve user profile. The user can login using her existing google account. 
 Integration of Google Login to the App allows the app developers to perform actions on user behalf.
 
-<a href="url"><img src="https://github.com/sambhaji213/Google-Login/blob/master/screenshot/device.png" align="left" height="480" width="250"></a>
+<a href="url"><img src="https://drive.google.com/open?id=1SmHimokUwrhFvzC41bNbtxDk_JCRiOsm" align="left" height="480" width="250"></a>
